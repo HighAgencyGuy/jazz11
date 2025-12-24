@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ShoppingBag, Search } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -54,9 +54,6 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" className="hidden md:flex">
-              <Search className="h-5 w-5" />
-            </Button>
             
             <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
@@ -101,7 +98,7 @@ const Header = () => {
                   
                   <div className="mt-auto pb-8">
                     <a
-                      href="https://wa.me/2348012345678"
+                      href="https://wa.me/2348141142258"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-primary-foreground rounded-lg font-medium"

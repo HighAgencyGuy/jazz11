@@ -1,11 +1,19 @@
 import dress1 from '@/assets/products/dress-1.jpg';
+import dress2 from '@/assets/products/dress-2.jpg';
 import twopiece1 from '@/assets/products/twopiece-1.jpg';
+import twopiece2 from '@/assets/products/twopiece-2.jpg';
 import top1 from '@/assets/products/top-1.jpg';
+import top2 from '@/assets/products/top-2.jpg';
 import corporate1 from '@/assets/products/corporate-1.jpg';
+import corporate2 from '@/assets/products/corporate-2.jpg';
 import casual1 from '@/assets/products/casual-1.jpg';
+import casual2 from '@/assets/products/casual-2.jpg';
 import skirt1 from '@/assets/products/skirt-1.jpg';
+import skirt2 from '@/assets/products/skirt-2.jpg';
 import shoes1 from '@/assets/products/shoes-1.jpg';
+import shoes2 from '@/assets/products/shoes-2.jpg';
 import bag1 from '@/assets/products/bag-1.jpg';
+import bag2 from '@/assets/products/bag-2.jpg';
 
 export interface Product {
   id: string;
@@ -152,6 +160,134 @@ export const products: Product[] = [
     inStock: true,
     isNew: true,
     isFeatured: true,
+  },
+  {
+    id: '9',
+    name: 'Emerald Goddess Maxi',
+    price: 78000,
+    category: 'Dresses',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Emerald Green', 'Royal Blue'],
+    description: 'Breathtaking emerald green maxi dress with flowing silhouette and elegant side slit. Perfect for special occasions.',
+    fabric: 'Premium georgette with silk lining',
+    careNotes: 'Dry clean only. Store hanging.',
+    fitNotes: 'Fitted bodice with flowing skirt. True to size.',
+    images: [dress2],
+    inStock: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: '10',
+    name: 'Peach Blush Power Set',
+    price: 72000,
+    category: 'Two-Piece Sets',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Peach', 'Dusty Rose', 'Cream'],
+    description: 'Feminine yet powerful peach blazer and wide-leg trouser set. Perfect for making a soft but bold statement.',
+    fabric: 'Premium poly-blend with stretch',
+    careNotes: 'Dry clean recommended.',
+    fitNotes: 'Tailored fit. Blazer runs slightly fitted.',
+    images: [twopiece2],
+    inStock: true,
+    isNew: true,
+    isFeatured: true,
+  },
+  {
+    id: '11',
+    name: 'Ankara Heritage Blouse',
+    price: 38000,
+    category: 'Tops',
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    colors: ['Gold/Orange Print'],
+    description: 'Beautiful Ankara-inspired print blouse celebrating Nigerian heritage. Modern cut meets traditional beauty.',
+    fabric: 'Premium cotton with African print',
+    careNotes: 'Machine wash cold. Iron inside out.',
+    fitNotes: 'Relaxed fit. Pairs beautifully with neutrals.',
+    images: [top2],
+    inStock: true,
+    isNew: true,
+    isFeatured: false,
+  },
+  {
+    id: '12',
+    name: 'Navy Executive Blazer',
+    price: 58000,
+    category: 'Corporate Wear',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Navy', 'Black'],
+    description: 'Impeccably tailored navy blazer for the modern professional woman. Clean lines and sophisticated finish.',
+    fabric: 'Italian wool blend',
+    careNotes: 'Dry clean only. Steam to refresh.',
+    fitNotes: 'Tailored fit. Consider sizing up for layering.',
+    images: [corporate2],
+    inStock: true,
+    isNew: false,
+    isFeatured: true,
+  },
+  {
+    id: '13',
+    name: 'Beige Wide-Leg Set',
+    price: 55000,
+    category: 'Casual Wear',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Beige', 'Black', 'Olive'],
+    description: 'Effortlessly chic beige wide-leg trousers paired with fitted black top. Weekend elegance made easy.',
+    fabric: 'Soft linen blend',
+    careNotes: 'Machine wash gentle. Line dry.',
+    fitNotes: 'Relaxed fit trousers. Top fits true to size.',
+    images: [casual2],
+    inStock: true,
+    isNew: true,
+    isFeatured: false,
+  },
+  {
+    id: '14',
+    name: 'Wine Pencil Skirt',
+    price: 32000,
+    category: 'Skirts',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['Wine', 'Navy', 'Black'],
+    description: 'Classic wine-colored pencil skirt that commands attention. Perfect for office to evening transitions.',
+    fabric: 'Structured stretch fabric',
+    careNotes: 'Machine wash cold. Low heat iron.',
+    fitNotes: 'Figure-hugging fit. Knee length.',
+    images: [skirt2],
+    inStock: true,
+    isNew: false,
+    isFeatured: false,
+  },
+  {
+    id: '15',
+    name: 'Classic Black Stilettos',
+    price: 48000,
+    category: 'Shoes',
+    sizes: ['37', '38', '39', '40', '41', '42'],
+    colors: ['Black'],
+    description: 'Timeless black pointed-toe stilettos. Every woman needs a perfect pair of black heels.',
+    fabric: 'Premium Italian leather',
+    careNotes: 'Wipe clean. Store in dust bag.',
+    fitNotes: 'True to size. 4-inch heel.',
+    images: [shoes2],
+    inStock: true,
+    isNew: false,
+    isFeatured: true,
+  },
+  {
+    id: '16',
+    name: 'Cognac Tote Bag',
+    price: 85000,
+    category: 'Bags',
+    sizes: ['One Size'],
+    colors: ['Cognac', 'Black'],
+    description: 'Spacious cognac leather tote with gold hardware. Perfect for work and weekend adventures.',
+    fabric: 'Full-grain Italian leather',
+    careNotes: 'Condition regularly. Store stuffed.',
+    fitNotes: 'Large size. Fits laptop and essentials.',
+    images: [bag2],
+    inStock: true,
+    isNew: true,
+    isFeatured: false,
   },
 ];
 
