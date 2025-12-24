@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
@@ -9,14 +9,42 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Message sent! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast.error('Please fill in all required fields');
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || undefined,
+          message: formData.message.trim(),
+        },
+      });
+
+      if (error) throw error;
+
+      toast.success('Message sent! We\'ll get back to you soon.');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message. Please try WhatsApp instead!');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -60,11 +88,49 @@ const Contact = () => {
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}>
                 <h2 className="font-serif text-2xl font-medium mb-6">Send a Message</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <Input placeholder="Your Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} required />
-                  <Input type="email" placeholder="Email Address" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} required />
-                  <Input type="tel" placeholder="Phone Number" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
-                  <Textarea placeholder="Your Message" rows={5} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} required />
-                  <Button type="submit" size="lg" className="w-full btn-wine"><Send className="w-5 h-5 mr-2" />Send Message</Button>
+                  <Input 
+                    placeholder="Your Name *" 
+                    value={formData.name} 
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <Input 
+                    type="email" 
+                    placeholder="Email Address *" 
+                    value={formData.email} 
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <Input 
+                    type="tel" 
+                    placeholder="Phone Number (optional)" 
+                    value={formData.phone} 
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })} 
+                    disabled={isSubmitting}
+                  />
+                  <Textarea 
+                    placeholder="Your Message *" 
+                    rows={5} 
+                    value={formData.message} 
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })} 
+                    required 
+                    disabled={isSubmitting}
+                  />
+                  <Button type="submit" size="lg" className="w-full btn-wine" disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-2" />
+                        Send Message
+                      </>
+                    )}
+                  </Button>
                 </form>
               </motion.div>
             </div>
