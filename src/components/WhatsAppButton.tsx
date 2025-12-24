@@ -1,5 +1,5 @@
 const WhatsAppButton = () => {
-  const whatsappNumber = '2348012345678';
+  const whatsappNumber = '2348141142258';
   const defaultMessage = 'Hello! I\'m interested in your fashion collection at JAZZ 11/11.';
   
   return (

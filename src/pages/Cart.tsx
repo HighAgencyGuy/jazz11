@@ -15,7 +15,7 @@ const Cart = () => {
   const handleWhatsAppCheckout = () => {
     const itemsList = items.map(item => `• ${item.product.name} (${item.selectedSize}, ${item.selectedColor}) x${item.quantity} - ${formatPrice(item.product.price * item.quantity)}`).join('\n');
     const message = `Hello! I'd like to place an order:\n\n${itemsList}\n\nTotal: ${formatPrice(totalPrice)}\n\nPlease confirm availability and delivery details.`;
-    window.open(`https://wa.me/2348012345678?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/2348141142258?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   if (items.length === 0) {
